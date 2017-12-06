@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-curl -O https://gitlab.com/CoreDockWorker/coredockworker.tools.public/raw/master/tools.log.git.sh
-chmod +x tools.log.git.sh
+# curl -O https://gitlab.com/CoreDockWorker/coredockworker.tools.public/raw/master/tools.log.git.sh
+# chmod +x tools.log.git.sh
 
 # This directory path
 DIR="$(cd "$(dirname "$0")" && pwd -P)"
@@ -41,7 +41,9 @@ cd "/tmp/tools.log.git.sh"
 git add --all
 git commit  --author="$AUTHOR" -am "$(whoami)@$HOSTNAME $(TZ="Europe/Paris" date +'%Y-%m-%d %H:%M %Z %A')"
 git push origin master
+echo "test"
 rm -rf "/tmp/tools.log.git.sh"
+echo "test"
 
 # install and update crontab atv_cron
 commandsearch="#${THIS}"
