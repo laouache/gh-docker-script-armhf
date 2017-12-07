@@ -1,14 +1,8 @@
-er-compose build --pull
-docker push laouache/gh-docker-smtp-armhf:latest
 #!/usr/bin/env bash
 
-# after 
-# docker login
+curl -O https://gitlab.com/CoreDockWorker/coredockworker.tools.public/raw/master/tools.log.git.sh
+chmod +x tools.log.git.sh
 
-docker-compose build --pull
-docker push laouache/gh-docker-script-armhf:latest
-# docker-compose down
-# docker-compose up -d
 # This directory path
 DIR="$(cd "$(dirname "$0")" && pwd -P)"
 # Full path of this script
@@ -53,7 +47,4 @@ rm -rf "/tmp/tools.log.git.sh"
 commandsearch="#${THIS}"
 command="cd $DIR ; ./$(basename $THIS) #${THIS}"
 job="0 */8 * * * $command"
-echo "test"
-cat <(fgrep -i -v "${commandsearch}" <(crontab -l)) <(echo "${job}") | crontab -
-echo "test"
-
+cat <(fgrep -i -v "$commandsearch" <(crontab -l)) <(echo "$job") | crontab -
